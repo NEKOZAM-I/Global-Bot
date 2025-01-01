@@ -106,7 +106,7 @@ client.on('interactionCreate', async (interaction) => {
             });
         }
 
-        // Validate amount
+        // Checking amount
         if (amount < 1 || amount > 100) {
             return interaction.reply({
                 content: 'Please provide a number between 1 and 100.',
@@ -115,7 +115,7 @@ client.on('interactionCreate', async (interaction) => {
         }
 
         try {
-            // Fetch messages
+            // Fetching messages
             const messages = await interaction.channel.messages.fetch({ limit: 100 });
             let filteredMessages;
 
