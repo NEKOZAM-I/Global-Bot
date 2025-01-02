@@ -57,30 +57,6 @@ const commands = [
                 .setRequired(false)
         ),
 ];
-
-const rest = new REST({ version: '10' }).setToken(token);
-
-// Deploy commands
-(async () => {
-    try {
-        console.log('Started refreshing global (/) commands.');
-
-        await rest.put(
-            Routes.applicationCommands(CLIENT_ID),
-            { body: commands.map(command => command.toJSON()) },
-        );
-
-        console.log('Successfully reloaded global (/) commands.');
-    } catch (error) {
-        console.error(error);
-    }
-})();
-
-// Bot is ready
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}`);
-});
-
 // Handle interactions
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
@@ -156,6 +132,3 @@ client.on('interactionCreate', async (interaction) => {
         }
     }
 });
-
-// Login yipeee
-client.login(TOKEN);
